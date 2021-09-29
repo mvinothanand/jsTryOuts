@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Chart using Chart.js</title>
+
+    <script type='text/javascript' src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+
+    <link rel="stylesheet" href="./line-chart.css">
+</head>
+<body>
+    <div class='container'>
+        <canvas id="myChart" class='canvas-1'></canvas>
+    </div>
+    
+    
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+                                    type: 'line',
+                                    data: {
+                                        labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'],
+                                        datasets: [
+                                            {
+                                                label: 'Slowest',
+                                                data: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100],
+                                                backgroundColor: '#D83A56',
+                                                borderColor: '#D83A56',
+                                                order: 1
+                                            },
+                                            {
+                                                label: 'Actual',
+                                                data: [0, 8, 12, 20, 24, 31, 39, 42, 46, 49, 54, 64, 70, 75, 77, 82, 89, 95, 98, 100],
+                                                backgroundColor: '#DF711B',
+                                                borderColor: '#DF711B',
+                                            },
+                                            {
+                                                label: 'Fastest',
+                                                data: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+                                                backgroundColor: '#66DE93',
+                                                borderColor: '#66DE93',
+                                            },
+
+                                        ]
+                                    },
+                                    options: {
+                                        scales: {
+                                            completion: {
+                                                beginAtZero: true,
+                                                axis: 'y',
+                                                title: {
+                                                    display: true,
+                                                    color: 'maroon',
+                                                    text: 'Completion %'
+                                                }
+
+                                            },
+                                            duration: {
+                                                axis: 'x',
+                                                display: true,
+                                                title: {
+                                                    display: true,
+                                                    color: 'red',
+                                                    text: 'Duration in days'
+                                                }
+                                            }
+                                        },
+                                        plugins: {
+                                            title: {
+                                                display: true,
+                                                text: 'Progress Chart',
+                                                color: 'blue',                                                
+                                            },
+                                            subtitle: {
+                                                display: true,
+                                                text: 'Mobilisation',
+                                                color: 'skyblue',                                                
+                                            },
+                                            legend: {
+                                                position: 'bottom'
+                                            }
+                                        }
+                                    }
+            });
+    </script>
+</body>
+</html>

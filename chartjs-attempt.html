@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Line Chart</title>
+
+    <!-- chart.js script for generating charts -->
+    <script type='text/javascript' src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    
+
+</head>
+<body>
+
+    <div>
+        <!-- Container to create chart -->
+        <canvas id='myChart'>            
+        </canvas>
+
+        <script>
+            // <block:setup:1>
+            const labels = [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May'
+            ];
+
+            const data = {
+                labels: labels,
+                dataset: [{
+                    label: 'My First Dataset',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [0, 10, 5, 2, 20, 30, 45],
+                }]
+            };
+            // </block:setup:1>
+
+            // <block:config:0>
+                const config = {
+                    type: 'line',
+                    data: data,
+                    options: {}
+                };
+            // </block:config>
+
+            module.exports = {
+                actions: [],
+                config: config,
+            };  
+            
+            var myChart = new Chart(
+                document.getElementById('myChart'), config);
+
+        </script>
+
+    </div>
+    
+</body>
+</html>
