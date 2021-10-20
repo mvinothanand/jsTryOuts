@@ -7,7 +7,8 @@
     ></script>
     <script type="text/javascript">
       // Load the Visualization API and the corechart package.
-      google.charts.load("current", { packages: ["corechart"] })
+      //google.charts.load("current", { packages: ["corechart"] })
+      google.charts.load("current", { packages: ["line"] })
 
       // Set a callback to run when the Google Visualization API is loaded.
       google.charts.setOnLoadCallback(drawChart)
@@ -17,6 +18,7 @@
       // draws it.
       const URL =
         "https://docs.google.com/spreadsheets/d/1tzZcpiXKKg3vfG89yCdUSb_4jHNjHnw_IVcKkF1nDMs/edit#gid=0"
+
       function drawChart() {
         var query = new google.visualization.Query(URL)
         query.send(handleQueryResponse)
@@ -32,11 +34,30 @@
           )
           return
         }
+
         var data = response.getDataTable()
-        var chart = new google.visualization.LineChart(
-          document.getElementById("chart_div")
-        )
-        chart.draw(data, { height: 800 })
+        //var chart = new google.visualization.LineChart(document.getElementById("chart_div")
+        var chart = new google.charts.Line(document.getElementById("chart_div"))
+
+        // Chart options
+        var options = {
+          "chart": {
+            "title": "Progress Chart",
+            "subtitle": "Excavation & Earthwork"
+          },
+          "width": 900,
+          "height": 600,
+          //backgroundColor: "whitesmoke",
+          backgroundColor: {
+            stroke: 'red',
+            strokeWidth: 5,
+            fill: '#FFFFFF'
+          }
+          
+          
+        }
+        //chart.draw(data, { height: 800 })
+        chart.draw(data, google.charts.Line.convertOptions(options))
       }
     </script>
   </head>
